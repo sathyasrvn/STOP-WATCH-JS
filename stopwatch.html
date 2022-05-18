@@ -1,0 +1,100 @@
+<!DOCTYPE html>    
+<meta charset="UTF-8">
+<meta name="published" content="sathya">
+<meta name="description" content="please fill in the below forms and application">
+<meta name="viewport" content="width=device-width initial-scale=1.0">
+<html>
+<head>
+<title>stop watch</title>
+<style>
+/** *{
+padding:0;
+margin:0;
+box-sizing:border-box;
+}*/
+body{
+background-image:linear-gradient(orange,white);
+}
+.container{
+display:flex;
+justify-content:center;
+align-items:center;
+border:1px solid black;
+height:100vh;
+text-align:center;
+}
+h1{
+font-family:cursive;
+font-size:2.5rem;
+text-transform:uppercase;
+}
+span{
+font-size:2rem;
+}
+button{
+background-color:black;
+color:white;
+padding:1rem 2rem;
+font-size:1.2rem;
+margin:1rem;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div>
+    <h1> stop watch </h1>
+	<p><span id="seconds">00</span>:<span id="milliseconds">00</span></p>
+	<button id="start">start</button>
+	<button id="stop">stop</button>
+	<button id="reset">reset</button>
+   </div>
+</div>	
+
+<script>
+var seconds=document.getElementById("seconds");
+var milliseconds=document.getElementById("milliseconds");
+var start=document.getElementById("start");
+var stop=document.getElementById("stop");
+var reset=document.getElementById("reset");
+var sec=0;
+var millisec=0;
+var timeInterval;
+  const timer = function(){
+   millisec++;
+      if(millisec < 9 ){
+         milliseconds.innerHTML = "0"+ millisec;
+      }
+      if(millisec > 9 ){
+	     milliseconds.innerHTML = millisec;
+       }
+      if(millisec  > 99 ){
+	     sec++;
+		 seconds.innerHTML = "0" + sec ;
+		 millisec = 0 ;
+		 milliseconds.innerHTML = "0" + millisec ;
+		 }
+		if(sec  > 9){
+          seconds.innerHTML = sec; 
+         }
+  }
+   start.addEventListener("click",function(){
+      timeInterval = setInterval(timer);  
+	  //(timer,10)  doubt ask him 
+    })
+    stop.addEventListener("click",()=>{
+	 clearInterval(timeInterval);
+	}) 
+	reset.addEventListener("click",()=>{
+	//clearInterval(timeInterval); ask dbt
+	 sec = "00";
+	 millisec= "00";
+	 seconds.innerHTML = sec;
+	 milliseconds.innerHTML = millisec;
+	 //console.log(seconds);
+	 })
+
+</script>
+</body>
+</html>
